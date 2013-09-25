@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Panjie SW's Blog</title><link>/</link><description></description><atom:link href="/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 26 Sep 2013 00:00:00 +0700</lastBuildDate><item><title>AngularJS Normal Links with HTML5 Mode</title><link>/posts/2013/09/angularjs-normal-links-with-html5mode/</link><description>&lt;p&gt;Yeah! At last, some code in this boring blog! :p&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Panjie SW's Blog</title><link>/</link><description></description><atom:link href="/feeds/codes.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 26 Sep 2013 00:00:00 +0700</lastBuildDate><item><title>AngularJS Normal Links with HTML5 Mode</title><link>/posts/2013/09/angularjs-normal-links-with-html5mode/</link><description>&lt;p&gt;Yeah! At last, some code in this boring blog! :p&lt;/p&gt;
 &lt;p&gt;Since the first time i played with &lt;a href="http://angularjs.org"&gt;AngularJS&lt;/a&gt; i have been enjoying the experience of developing a rich web application. I won't describe what it is or compare it with other client side javascript frameworks out there here right now, maybe some other time. Instead, also as a kind of note for myself, i will only write here a portion of one of its feature, HTML5 Mode in $location service.&lt;/p&gt;
 &lt;p&gt;HTML5 Mode, a configuration mode of &lt;a href="http://docs.angularjs.org/api/ng.$location"&gt;$location service&lt;/a&gt; in angularjs, uses HTML5 History API which one of its usage is to enrich client side interaction in a web application. When the $location service configured with this mode, browser will not do a full page reload when its URL is changed, without the need of hashbang &lt;code&gt;#!&lt;/code&gt; in part of URL. But what if, in one time, you need a full page reload to react on browser's URL change? Such as signing a user out, which usually is handled by server side of your app.&lt;/p&gt;
 &lt;p&gt;For the sake of completeness(?), here is how i usually do to setup the $locationProvider to use html5 mode. Yes, i use coffeescript, it's easier to write and read, also provide a little similiar syntax as Python, which also i love.&lt;/p&gt;
@@ -47,23 +47,4 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;In our case above, just put a &lt;code&gt;target="_self"&lt;/code&gt; attribute to the anchor and the browser will do a full page reload so they hit the server side application directly.  &lt;/p&gt;
-&lt;p&gt;There we go, all good and set. Now back to the code :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Panjie SW</dc:creator><pubDate>Thu, 26 Sep 2013 00:00:00 +0700</pubDate><guid>tag:,2013-09-26:posts/2013/09/angularjs-normal-links-with-html5mode/</guid><category>javascript</category><category>coffeescript</category><category>angularjs</category><category>html5</category><category>reminder</category></item><item><title>This Kind Of Person</title><link>/posts/2013/09/this-kind-of-person/</link><description>&lt;p&gt;Most of you might agree with me on this one,&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;that there's always someone in your life&lt;br /&gt;
-whom you love very much, but cannot be with.&lt;br /&gt;
-And whoever you'll meet, whatever you'll do,&lt;br /&gt;
-nothing would like it would be with that one.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Yup, i quoted that from &lt;a href="http://9gag.com/gag/a8WpmeV"&gt;this 9gag repost&lt;/a&gt;. Since i don't watch HIMYM, i omitted the Robin part, but still, the context apply.&lt;/p&gt;
-&lt;p&gt;In my case, there is one.&lt;br /&gt;
-That person basically creates who i am right now.&lt;br /&gt;
-That person is whom i comfortable with.&lt;br /&gt;
-That person takes relativity to another level when i am with her.&lt;br /&gt;
-That person, deep down in my temple i know, is the one i can never be with.  &lt;/p&gt;
-&lt;p&gt;There it goes, 3 months without a single post, ended with an &lt;strong&gt;alay&lt;/strong&gt; post.&lt;br /&gt;
-Whatever.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Panjie SW</dc:creator><pubDate>Sat, 07 Sep 2013 00:00:00 +0700</pubDate><guid>tag:,2013-09-07:posts/2013/09/this-kind-of-person/</guid><category>person</category><category>randomness</category><category>late-night</category><category>her</category></item><item><title>Hello World!</title><link>/posts/2013/06/hello-world/</link><description>&lt;p&gt;This is my first blog post!! A classic&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Hello world!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;See you soon ;)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Panjie SW</dc:creator><pubDate>Thu, 27 Jun 2013 00:00:00 +0700</pubDate><guid>tag:,2013-06-27:posts/2013/06/hello-world/</guid><category>helloworld</category><category>randomness</category><category>first</category></item></channel></rss>
+&lt;p&gt;There we go, all good and set. Now back to the code :)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Panjie SW</dc:creator><pubDate>Thu, 26 Sep 2013 00:00:00 +0700</pubDate><guid>tag:,2013-09-26:posts/2013/09/angularjs-normal-links-with-html5mode/</guid><category>javascript</category><category>coffeescript</category><category>angularjs</category><category>html5</category><category>reminder</category></item></channel></rss>

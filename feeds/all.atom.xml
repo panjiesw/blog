@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Panjie SW's Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2013-09-07T00:00:00+07:00</updated><entry><title>This Kind Of Person</title><link href="/posts/2013/09/this-kind-of-person/" rel="alternate"></link><updated>2013-09-07T00:00:00+07:00</updated><author><name>Panjie SW</name></author><id>tag:,2013-09-07:posts/2013/09/this-kind-of-person/</id><summary type="html">&lt;p&gt;Most of you might agree with me on this one,&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Panjie SW's Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2013-09-26T00:00:00+07:00</updated><entry><title>AngularJS Normal Links with HTML5 Mode</title><link href="/posts/2013/09/angularjs-normal-links-with-html5mode/" rel="alternate"></link><updated>2013-09-26T00:00:00+07:00</updated><author><name>Panjie SW</name></author><id>tag:,2013-09-26:posts/2013/09/angularjs-normal-links-with-html5mode/</id><summary type="html">&lt;p&gt;Yeah! At last, some code in this boring blog! :p&lt;/p&gt;
+&lt;p&gt;Since the first time i played with &lt;a href="http://angularjs.org"&gt;AngularJS&lt;/a&gt; i have been enjoying the experience of developing a rich web application. I won't describe what it is or compare it with other client side javascript frameworks out there here right now, maybe some other time. Instead, also as a kind of note for myself, i will only write here a portion of one of its feature, HTML5 Mode in $location service.&lt;/p&gt;
+&lt;p&gt;HTML5 Mode, a configuration mode of &lt;a href="http://docs.angularjs.org/api/ng.$location"&gt;$location service&lt;/a&gt; in angularjs, uses HTML5 History API which one of its usage is to enrich client side interaction in a web application. When the $location service configured with this mode, browser will not do a full page reload when its URL is changed, without the need of hashbang &lt;code&gt;#!&lt;/code&gt; in part of URL. But what if, in one time, you need a full page reload to react on browser's URL change? Such as signing a user out, which usually is handled by server side of your app.&lt;/p&gt;
+&lt;p&gt;For the sake of completeness(?), here is how i usually do to setup the $locationProvider to use html5 mode. Yes, i use coffeescript, it's easier to write and read, also provide a little similiar syntax as Python, which also i love.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# in a module which defines routes&lt;/span&gt;
+&lt;span class="nv"&gt;module.exports = &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;$routeProvider&amp;#39;&lt;/span&gt;
+  &lt;span class="s"&gt;&amp;#39;$locationProvider&amp;#39;&lt;/span&gt;
+  &lt;span class="nf"&gt;($routeProvider, $locationProvider, config) -&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nx"&gt;$routeProvider&lt;/span&gt;
+      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;when&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/a-route&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nv"&gt;templateUrl: &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/some/directory/partial.html&amp;#39;&lt;/span&gt;
+        &lt;span class="nv"&gt;controller: &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;SomeController&amp;#39;&lt;/span&gt;
+      &lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="c1"&gt;# ...and many other routes&lt;/span&gt;
+
+      &lt;span class="c1"&gt;# Catch all&lt;/span&gt;
+      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;otherwise&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="nv"&gt;redirectTo: &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/catch-all&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Use html5 mode.&lt;/span&gt;
+    &lt;span class="nx"&gt;$locationProvider&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;html5Mode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With above config, whenever user hit an anchor with link in your angularjs bootstrapped app, the browser will not do a full page reload. Instead the app will catch the URL and send it to your route handler client side so you can interact your app further.&lt;/p&gt;
+&lt;p&gt;A problem arise when using such configuration, as one or more link in your app need to be handled by your server side application, and thus the browser need to do a full page reload for it to bypass the angularjs app. Confused yet? Yeah, me too :p . But bear with still-a-newb-in-writing-me and think of one example like the one mentioned above.&lt;/p&gt;
+&lt;p&gt;Yup, usually signing a user out of your application involves direct interaction with your server side application, maybe to remove the session, token, any other authentication related stuff. How can we do that while the client side application is configured with html5mode like above? Here are what i found from stumbling in SO and do a further reading in AngularJS docs:&lt;/p&gt;
+&lt;p&gt;Taken from &lt;a href="http://docs.angularjs.org/guide/dev_guide.services.$location"&gt;AngularJS docs&lt;/a&gt;, &lt;strong&gt;Html link rewriting&lt;/strong&gt; section:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When you use HTML5 history API mode, you will need different links in different browsers, but all you have to do is specify regular URL links, such as: &lt;code&gt;&amp;lt;a href="/some?foo=bar"&amp;gt;link&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When a user clicks on this link,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In a legacy browser, the URL changes to /index.html#!/some?foo=bar&lt;/li&gt;
+&lt;li&gt;In a modern browser, the URL changes to /some?foo=bar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In cases like the following, links are not rewritten; instead, the browser will perform a full page reload to the original link.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Links that contain target element&lt;br /&gt;
+   Example: &lt;code&gt;&amp;lt;a href="/ext/link?a=b" target="_self"&amp;gt;link&amp;lt;/a&amp;gt;&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Absolute links that go to a different domain&lt;br /&gt;
+   Example: &lt;code&gt;&amp;lt;a href="http://angularjs.org/"&amp;gt;link&amp;lt;/a&amp;gt;&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Links starting with '/' that lead to a different base path when base is defined&lt;br /&gt;
+   Example: &lt;code&gt;&amp;lt;a href="/not-my-base/link"&amp;gt;link&amp;lt;/a&amp;gt;&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In our case above, just put a &lt;code&gt;target="_self"&lt;/code&gt; attribute to the anchor and the browser will do a full page reload so they hit the server side application directly.  &lt;/p&gt;
+&lt;p&gt;There we go, all good and set. Now back to the code :)&lt;/p&gt;</summary><category term="javascript"></category><category term="coffeescript"></category><category term="angularjs"></category><category term="html5"></category><category term="reminder"></category></entry><entry><title>This Kind Of Person</title><link href="/posts/2013/09/this-kind-of-person/" rel="alternate"></link><updated>2013-09-07T00:00:00+07:00</updated><author><name>Panjie SW</name></author><id>tag:,2013-09-07:posts/2013/09/this-kind-of-person/</id><summary type="html">&lt;p&gt;Most of you might agree with me on this one,&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;that there's always someone in your life&lt;br /&gt;
 whom you love very much, but cannot be with.&lt;br /&gt;
