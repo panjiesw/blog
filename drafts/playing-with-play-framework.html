@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en_us.utf8">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Playing With Play Framework - Panjie SW's Blog</title>
+
+  <meta name="author" content="Panjie SW">
+  <meta name="description" content="">
+  <meta name="robots" content="index,follow">
+
+  <meta property="og:site_name" content="Panjie SW's Blog">
+  <meta property="og:type" content="website">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="favicon-144.png">
+
+  <link rel="apple-touch-icon-precomposed" href="favicon-152.png">
+
+  <link rel="author" href="https://plus.google.com/+PanjieSetiawanWicaksono">
+
+  <!-- <link rel="stylesheet/less" type="text/css" href="http://blog.panjiesw.com/theme/css/style.less"> -->
+  <!-- <script src="http://blog.panjiesw.com/theme/js/less-1.5.0.min.js" type="text/javascript"></script> -->
+  <link rel="stylesheet" type="text/css" href="http://blog.panjiesw.com/theme/css/style.css">
+
+  <link rel="stylesheet" type="text/css" href="http://blog.panjiesw.com/theme/css/pygments.css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:800,400,300" rel="stylesheet" type="text/css">
+
+  <link href="http://blog.panjiesw.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Panjie SW's Blog Full Atom Feed" />
+
+<meta name="keywords" content="java, scala, play-framework">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-30473301-1', 'panjiesw.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://blog.panjiesw.com">
+        <img src="http://blog.panjiesw.com/static/images/pict.png" alt="logo">
+      </a>
+      <h2><a href="http://blog.panjiesw.com">Panjie SW</a></h2>
+      <p>randomness happens</p>
+      <ul>
+        <li><a href="https://twitter.com/panjiesw" target="_blank">@panjiesw</a></li>
+        <li><a href="http://github.com/panjiesw" target="_blank">Github</a></li>
+        <li><a href="http://blog.panjiesw.com/categories" target="_blank">Categories</a></li>
+        <li><a href="http://blog.panjiesw.com/tags" target="_blank">Tags</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+<p>Posted on Mon 17 March 2014</p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://blog.panjiesw.com/posts/2014/03/playing-with-play-framework/">Playing With Play Framework</a></h3>
+  </div>
+  <div class="article_text">
+    <h2>Preface</h2>
+<p>First of all, i was originally not fond of the idea building a web application using Java or any JVM based language. I always preferred php, python, or Node.js for that, until i found out about Play Framework and using it in a project.</p>
+<p>In the last few months i have been working on a project using Play Framework. It's a <a href="http://www.playframework.com/">High Velocity Web Framework For Java and Scala</a>, built on <a href="http://akka.io/">Akka</a>, a toolkit and runtime for building high concurrent, distributed and fault tolerant event-driven applications on the JVM. Here in this post i'll share how enjoyable it is playing with Play Framework and Scala. And it appears it's not as scary as i thought, developing a Web Application using JVM based language.</p>
+<p>Play Framework comes with support for Java and Scala. Although in its core Play uses Scala, but they also provides all the hook and API to use in Java application. So you can choose to work with either language, or mix both of them together in one app if you like. I for one, use Scala as my main language to work with to get the flexibility of functional programming and also the power of JVM.</p>
+<h2>The Fun Begins</h2>
+<h4>1. Play Framework Distribution Download</h4>
+<p>If we visit the <a href="http://www.playframework.com/download">Play Download Page</a>, there are two flavor of distribution to choose, New Distribution using Typesafe Activator or Classic Distribution.</p>
+<p>The difference is, Typesafe Activator comes with a Web UI for Play Console and <a href="http://typesafe.com/activator/templates">a lot of templates</a> to try or become the base of our projects. So it's the best choice to learn if you're just starting with Play Framework. Another difference is the command to use, it's <code>activator</code> if you're using Typesafe Activator, and <code>play</code> if you're using Classic Distribution.</p>
+<p>[image Activator]</p>
+<p>For me, i chose the Classic one, so i get the <code>play</code> command. I believe all <code>play</code> command is also available in <code>activator</code> so if you chose the New Distribution, all commands below will also work in Typesafe Activator console.</p>
+<p><strong>NOTICE</strong>: Some of Linux distributions come with a program with Command Line Interface <code>play</code> same as Classic Distribution Play Console command. If somehow you want to keep it, you'll need to add an alias to Play Console Command to work effectively.</p>
+<div class="highlight"><pre><span class="n">alias</span> <span class="n">play</span><span class="o">=</span><span class="err">$</span><span class="n">PLAY_HOME</span><span class="o">/</span><span class="n">play</span>
+</pre></div>
+
+
+<p>After download finished and the play command has made available in your environment, type <code>play</code> to check it's working properly. It should print out something like in picture below.</p>
+<p>[screen shot play command]</p>
+  </div>
+  <div class="article_meta">
+    <p>Category: <a href="http://blog.panjiesw.com/category/codes.html">Codes</a></p>
+    <p>Tags:
+      <a href="http://blog.panjiesw.com/tag/java.html">java</a>,      <a href="http://blog.panjiesw.com/tag/scala.html">scala</a>,      <a href="http://blog.panjiesw.com/tag/play-framework.html">play-framework</a>    </p>
+    <p>Comments: <a href="#" onclick="javascript:toggleComments();return false;">toggle</a></p>
+  </div>
+
+    <div id="article_comments" style="display:block">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+           var disqus_identifier = "playing-with-play-framework";
+           (function() {
+           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+           dsq.src = 'http://panjieblog.disqus.com/embed.js';
+           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+    </div>
+
+</article>
+
+    <footer>
+<p><a href="http://blog.panjiesw.com/" class="button_accent">&larr; Back to Index</a></p>
+<script language="javascript">
+    function toggleComments() {
+        var commentDiv = document.getElementById("article_comments");
+        (commentDiv.style.display == "none") ? commentDiv.style.display = "block" : commentDiv.style.display = "none";
+        return false;
+    }
+</script>
+    </footer>
+
+    <div id="ending_message">
+      <p>&copy; Panjie SW. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/giulivo/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>
