@@ -1,0 +1,25 @@
+{
+  "name": "panjiesw-blog",
+  "version": "1.0.0",
+  "description": "Panjie SW Blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/panjiesw/blog.git"
+  },
+  "author": "Panjie SW <panjie@panjiesw.com> (http://blog.panjiesw.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/panjiesw/blog/issues"
+  },
+  "homepage": "https://github.com/panjiesw/blog",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-pelican": "^0.2.2"
+  }
+}

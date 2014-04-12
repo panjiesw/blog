@@ -1,7 +1,10 @@
 #Custom
-local_settings.py
+local_settings*.py
 output
 .idea
+*.sublime-*
+node_modules
+bower_components
 
 #Python
 *.py[cod]
