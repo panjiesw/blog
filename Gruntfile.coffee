@@ -40,6 +40,10 @@ module.exports = (grunt) ->
     'pelican:dev'
   ]
 
+  grunt.registerTask 'dist', [
+    'pelican:dist'
+  ]
+
   grunt.registerTask 'default', [
     'connect'
     'watch'
