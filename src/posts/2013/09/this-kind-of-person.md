@@ -3,7 +3,7 @@ Date: 2013-09-07
 Category: Randomness
 Tags: person, randomness, late-night, her
 Slug: this-kind-of-person
-Author: Panjie SW
+Author: Panjie Setiawan Wicaksono
 Summary: Most of you might agree with me on this one, that there's always someone in your life whom you love very much, but cannot be with. And whoever you'll meet, whatever you'll do, nothing would like it would be with that one.
 
 Most of you might agree with me on this one,
