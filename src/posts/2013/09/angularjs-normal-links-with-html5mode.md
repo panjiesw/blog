@@ -7,7 +7,7 @@ Disqus: angularjs-normal-links-with-html5mode
 meta_description: How to do full page reload with AngularJS HTML5 Mode.
 meta_og_description: How to do full page reload with AngularJS HTML5 Mode.
 meta_og_image: /static/images/angularjs.jpg
-Author: Panjie SW
+Author: Panjie Setiawan Wicaksono
 Summary: HTML5 Mode, a configuration mode of [$location service](http://docs.angularjs.org/api/ng.$location) in angularjs, uses HTML5 History API which one of its usage is to enrich client side interaction in a web application. When the $location service configured with this mode, browser will not do a full page reload when its URL is changed, without the need of hashbang ``#!`` in part of URL. But what if, in one time, you need a full page reload to react on browser's URL change? Such as signing a user out, which usually is handled by server side of your app.
 
 Yeah! At last, some code in this boring blog! :p
