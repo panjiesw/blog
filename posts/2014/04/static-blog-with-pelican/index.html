@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en_us.utf8">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Static Blog with Pelican - Panjie SW's Blog</title>
+
+  <meta name="description" content="Learn how to make a static blog with Pelican and publish it to Github Pages.
+">
+  <meta name="robots" content="index,follow">
+
+  <meta name="keywords" content="pelican, python, static, blog, gh-pages, github pages">
+  <meta property="og:title" content="Static Blog with Pelican">
+  <meta property="og:description" content="Learn how to make a static blog with Pelican and publish it to Github Pages.">
+  <meta property="og:url" content="http://blog.panjiesw.com/posts/2014/04/static-blog-with-pelican/">
+  <meta property="og:image" content="http://blog.panjiesw.com//static/images/pelican.png">
+  <meta property="og:site_name" content="Panjie SW's Blog">
+  <meta property="og:type" content="website">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="favicon-144.png">
+
+  <link rel="apple-touch-icon-precomposed" href="favicon-152.png">
+
+  <link rel="author" href="https://plus.google.com/+PanjieSetiawanWicaksono">
+
+  <!-- <link rel="stylesheet/less" type="text/css" href="http://blog.panjiesw.com/theme/css/style.less"> -->
+  <!-- <script src="http://blog.panjiesw.com/theme/js/less-1.5.0.min.js" type="text/javascript"></script> -->
+  <link rel="stylesheet" type="text/css" href="http://blog.panjiesw.com/theme/css/style.css">
+
+  <link rel="stylesheet" type="text/css" href="http://blog.panjiesw.com/theme/css/pygments.css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:800,400,300" rel="stylesheet" type="text/css">
+
+  <link href="http://blog.panjiesw.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Panjie SW's Blog Full Atom Feed" />
+
+<meta name="keywords" content="pelican, python">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-30473301-1', 'panjiesw.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://blog.panjiesw.com">
+        <img src="http://blog.panjiesw.com/static/images/pict.png" alt="logo">
+      </a>
+      <h2><a href="http://blog.panjiesw.com">Panjie SW</a></h2>
+      <p>randomness happens</p>
+      <ul>
+        <li><a href="http://blog.panjiesw.com/categories">Categories</a></li>
+        <li><a href="http://blog.panjiesw.com/tags">Tags</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://twitter.com/panjiesw">@panjiesw</a></li>
+        <li><a href="http://github.com/panjiesw">Github</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+<p>Posted on Sun 13 April 2014</p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="http://blog.panjiesw.com/posts/2014/04/static-blog-with-pelican/">Static Blog with Pelican</a></h1>
+  </div>
+    <div class="article_image">
+      <img src="http://blog.panjiesw.com//static/images/pelican.png" alt="Static Blog with Pelican">
+    </div>
+  <div class="article_text">
+    <p>Been months since my last blog post lol :)) I'll begin to cover my lack of writing enthusiasm by writing about, well, how i create this blog, a happy static site hosted in Github Pages.</p>
+<p><a href="http://blog.getpelican.com/">Pelican</a> is a static site publishing tool. This blog of mine is one of running example using Pelican. This awesome Python based tool is simple, tidy while also has the power to be extendable and scalable. Combine it with <a href="https://pages.github.com">gh-pages</a> of Github and you will get a fun and <em>free</em> blogging experience without the much more bloated system in <em>conventional</em> CMS.</p>
+<p>You can see a list of Pelican feature at their <a href="http://blog.getpelican.com/">blog</a>. Some of features i'd like to mention are <strong>Markdown + rst content writing</strong> and <strong>Code syntax highlighting</strong>. Markdown and rst are a pleasant to work in writing content. Instead of HTML tag or button-clicking / shortcut remembering in WYSIWYG rich text editor, they let you concentrate in making a great writing with a little syntax. And as this blog will mostly be filled with techie code things (among my other randomness), code syntax highlighting of <strong>Pygments</strong> will surely comes in handy. Already have a site of contents published in <strong>WordPress</strong>? Pelican can import it to static Pelican compatible contents. GREAT!! Enough <em>blabbering</em> and let's get started :)</p>
+<h2>Jumps To</h2>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#github">Setting up Github account and Github Pages</a></li>
+<li><a href="#setup-env">Setting Up Our Development Environment</a></li>
+<li><a href="#install-pelican">Installing Pelican</a></li>
+<li><a href="#project-structure">The Project Structure</a></li>
+<li><a href="#workflow">The Workflow</a><ul>
+<li><a href="#createpost">Creating a Blog Post</a></li>
+<li><a href="#publishing">Publishing Contents</a></li>
+</ul>
+</li>
+<li><a href="#next">What's Next</a><ul>
+<li><a href="#domain">Custom Domain with Github Pages</a></li>
+<li><a href="#automation">Automation Tools</a></li>
+</ul>
+</li>
+<li><a href="#alternatives">Alternatives</a></li>
+</ul>
+<p><a name="requirements"></a></p>
+<h2>Requirements</h2>
+<ul>
+<li>Python <code>&gt;=2.6</code></li>
+<li>Github account</li>
+<li>Git</li>
+<li>Writing and tinkering enthusiasm :p</li>
+</ul>
+<p><a name="github"></a></p>
+<h2>Setting Up Github Account and Github Pages</h2>
+<p>We'll use Github Pages as our static content host. As it's static, your contents can easily be hosted anywhere. But with Git, you can track and get version history of your contents. Besides, it's free!!</p>
+<p>Go to <a href="https://github.com/">Github</a> and sign a new account up if you haven't had one, then create a new repository for our blog. For this tutorial i'll name it <code>blog</code>.</p>
+<p>Now, for our blog to be accessible, we need to create a new branch called <code>gh-pages</code> and place our site content (.html, .css files, images, etc.) into it. Later, your blog will have a URL like <code>http://youraccount.github.io/blog</code>.</p>
+<p>Personally, i'd like to organize my branches like so:</p>
+<div class="highlight"><pre>// in &#39;master&#39; (default branch)
+blog
+├── .gitignore
+├── local_settings.py
+├── local_settings_dev.py
+├── README.md
+├── requirements.txt
+├── settings.py
+├── plugins
+    ├── plugin_one.py
+    ├── other_plugin.py
+├── src
+    ├── posts
+        ├── 2014
+            ├── 01
+                ├── some-post.md
+                ├── another-post.md
+</pre></div>
+
+
+<p>And in <code>gh-pages</code> branch, includes all above structures <strong>plus</strong> generated static content in root <code>blog</code> directory. Messy, don't you think? Don't worry, we'll do almost all work in <code>master</code> branch so it's ok to have a messy <code>gh-pages</code>, i think.</p>
+<p><a name="setup-env"></a></p>
+<h2>Setting Up Our Development Environment</h2>
+<p>If you already have <code>pip</code> and <code>virtualenv</code> set, then you can skip to the <a href="#install-pelican">next section</a>.</p>
+<ul>
+<li>
+<p>Install <code>setuptools</code>. Download <a href="https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py">ez_setup.py</a> and run it using target Python version. This will install <code>easy_install</code> CLI command to manage packages.</p>
+<div class="highlight"><pre>wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+</pre></div>
+
+
+<p>or, to install to the system Python</p>
+<div class="highlight"><pre>wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
+</pre></div>
+
+
+</li>
+<li>
+<p>Install <code>pip</code>. Using <code>easy_install</code> above, use superuser privileges if needed.</p>
+<div class="highlight"><pre>easy_install pip
+</pre></div>
+
+
+</li>
+<li>
+<p>Install <code>virtualenv</code>. Virtualenv is an environment wrapper to run and install Python packages independent to the system Python packages.</p>
+<div class="highlight"><pre>pip install virtualenv
+</pre></div>
+
+
+</li>
+<li>
+<p>Create a new virtual environment for our blog project. In this tutorial, i'll name it <code>blog-env</code>.</p>
+<div class="highlight"><pre>virtualenv blog-env
+</pre></div>
+
+
+</li>
+<li>
+<p>Activate the virtual environment.</p>
+<div class="highlight"><pre><span class="nb">cd </span>blog-env
+<span class="nb">source</span> ./bin/activate
+<span class="c"># to deactivate it</span>
+deactivate
+</pre></div>
+
+
+</li>
+</ul>
+<p><a name="install-pelican"></a></p>
+<h2>Installing Pelican</h2>
+<p>To get Pelican to work we'll need to install it. <em>duh</em>.</p>
+<p>In our activated virtualenv <code>blog-env</code>, run this command</p>
+<div class="highlight"><pre>pip install pelican
+</pre></div>
+
+
+<p><a name="project-structure"></a></p>
+<h2>The Project Structure</h2>
+<p>Inside the <code>blog-env</code> folder, create a folder for our blog project, i'll call it <code>blog</code> same as our repository name we created earlier. Then we need to setup a local git in this folder.</p>
+<div class="highlight"><pre><span class="nb">cd </span>blog
+<span class="c"># Initialize git</span>
+git init .
+<span class="c"># Add remote origin</span>
+git remote add origin git@github.com:youraccount/blog.git
+</pre></div>
+
+
+<p>Create a directory structure of <code>blog</code> like in master branch organization above. I'll explain each of its use.</p>
+<ul>
+<li>
+<p><code>.gitignore</code>, place here any path you don't want to include in your git repository. Here is the example content you can use.</p>
+<div class="highlight"><pre>local_settings*.py
+output
+
+<span class="c"># Python</span>
+*.py<span class="o">[</span>cod<span class="o">]</span>
+
+<span class="c"># C extensions</span>
+*.so
+
+<span class="c"># Packages</span>
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+<span class="c"># Installer logs</span>
+pip-log.txt
+
+<span class="c"># Unit test / coverage reports</span>
+.coverage
+.tox
+nosetests.xml
+
+<span class="c"># Translations</span>
+*.mo
+
+<span class="c"># Mr Developer</span>
+.mr.developer.cfg
+.project
+.pydevproject
+</pre></div>
+
+
+</li>
+<li>
+<p><code>local_settings.py</code>, contains Pelican settings used in deploying the blog, while <code>local_settings_dev.py</code> is used in development. Like this, we can customize the settings both when in development, and when we're ready to publish in <code>gh-pages</code> branch.</p>
+<p>We don't want to include this in our repo because it may contain personal data.</p>
+<p>You can see all Pelican available settings <a href="http://pelican.readthedocs.org/en/3.3.0/settings.html">here</a>.</p>
+</li>
+<li>
+<p><code>settings.py</code>, contains the same contents as <code>local_settings*</code> except we strip all value from it. We'll make this as our reminder of how our settings are defined and include it in our repository. Here is an example of <code>settings.py</code> contents</p>
+<div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s">&#39;xxxxxxxx xxxxxxxxxxxxx&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s">&quot;xxxxxxxxxxxx&quot;</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s">&#39;http://xxxxxxxxxxxxxxxxx&#39;</span>
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s">&quot;Europe/Madrid&quot;</span>
+
+<span class="n">GITHUB_URL</span> <span class="o">=</span> <span class="s">&#39;http://github.com/XXXXX&#39;</span>
+<span class="n">DISQUS_SITENAME</span> <span class="o">=</span> <span class="s">&quot;XXXXXXXXXX&quot;</span>
+<span class="n">EMAIL</span> <span class="o">=</span> <span class="s">&quot;XXXXXXXXXXXXXX@gmail.com&quot;</span>
+<span class="n">PDF_GENERATOR</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">REVERSE_CATEGORY_ORDER</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">LOCALE</span> <span class="o">=</span> <span class="s">&#39;en_US&#39;</span>
+<span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">THEME</span> <span class="o">=</span> <span class="s">&quot;iris&quot;</span>
+
+<span class="n">FEED_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/all.rss.xml&#39;</span>
+<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/</span><span class="si">%s</span><span class="s">.rss.xml&#39;</span>
+
+<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;XXXXX XXXX&#39;</span><span class="p">,</span> <span class="s">&#39;http://YYYYYYYYYYY.ZZZ&#39;</span><span class="p">),)</span>
+
+<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;twitter&#39;</span><span class="p">,</span> <span class="s">&#39;http://twitter.com/XXXXXX&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s">&#39;linkedin&#39;</span><span class="p">,</span> <span class="s">&#39;http://www.linkedin.com/in/XXXXXXX&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s">&#39;github&#39;</span><span class="p">,</span> <span class="n">GITHUB_URL</span><span class="p">),)</span>
+
+<span class="n">OUTPUT_PATH</span> <span class="o">=</span> <span class="s">&#39;output&#39;</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="s">&#39;src&#39;</span>
+
+<span class="n">ARTICLE_URL</span> <span class="o">=</span> <span class="s">&quot;posts/{date:%Y}/{date:%m}/{slug}/&quot;</span>
+<span class="n">ARTICLE_SAVE_AS</span> <span class="o">=</span> <span class="s">&quot;posts/{date:%Y}/{date:%m}/{slug}/index.html&quot;</span>
+
+<span class="n">GOSQUARED_SITENAME</span> <span class="o">=</span> <span class="s">&quot;XXX-YYYYYY-X&quot;</span>
+
+<span class="c"># global metadata to all the contents</span>
+<span class="c">#DEFAULT_METADATA = ((&#39;yeah&#39;, &#39;it is&#39;),)</span>
+
+<span class="c"># static paths will be copied under the same name</span>
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;images&quot;</span><span class="p">,</span> <span class="p">]</span>
+
+<span class="c"># A list of files to copy from the source to the destination</span>
+<span class="c">#FILES_TO_COPY = ((&#39;extra/robots.txt&#39;, &#39;robots.txt&#39;),)</span>
+</pre></div>
+
+
+</li>
+<li>
+<p><code>plugins</code> folder contains all Pelican plugins used in our blog.</p>
+</li>
+<li><code>src</code> folder contains all Pelican sources which will be generated to static contents. Inside it, there is a <code>posts</code> folder which contains all our blog posts organized by year, month and date of publishing.</li>
+</ul>
+<p><a name="workflow"></a></p>
+<h2>The Workflow</h2>
+<p>Now that everything is setup, let's define a workflow to write and publish our post.</p>
+<p>We have 2 branches in our local git repo</p>
+<ul>
+<li><code>master</code> contains the sources of the blog. We'll write a new <code>markdown</code> or <code>rst</code> file for our posts here, add images, and stuff. Basically we do almost all the work in this branch.</li>
+<li><code>gh-pages</code> contains the static content generated from the sources. We'll merge the sources from <code>master</code> branch and regenerate the static contents.</li>
+</ul>
+<p><a name="createpost"></a></p>
+<h3>Creating a Blog Post</h3>
+<p>To create a blog post, we'll do these steps, in <code>master</code> branch of our repository.</p>
+<ol>
+<li>
+<p><code>master</code> -&gt; Write the post with <code>markdown</code> or <code>rst</code>.</p>
+<div class="highlight"><pre>mkdir -p src/posts/2014/04
+touch src/posts/2014/04/hello-world.md
+</pre></div>
+
+
+</li>
+<li>
+<p><code>master</code> -&gt; Generate the static contents to default output path, which is folder <code>output</code>.</p>
+<div class="highlight"><pre>pelican -s ./local_settings_dev.py
+</pre></div>
+
+
+</li>
+<li>
+<p><code>master</code> -&gt; Preview the generated static contents in a local server. These commands will run a local server in <code>localhost:8000</code></p>
+<div class="highlight"><pre><span class="nb">cd </span>output
+<span class="c"># using python 2.6 or 2.7</span>
+python -m SimpleHTTPServer
+<span class="c"># using python 3.x</span>
+python3 -m http.server
+</pre></div>
+
+
+</li>
+</ol>
+<p>You can repeat those steps in development time as much as needed until you satisfied and ready to publish the contents.</p>
+<p><a name="publishing"></a></p>
+<h3>Publishing Contents</h3>
+<p>When you're ready to publish your contents, we'll do these steps, in <code>gh-pages</code> of our repository.</p>
+<ol>
+<li>
+<p><code>master</code> -&gt; Commit the sources change and push it to Github. This won't be the blog, it's just our sources.</p>
+<div class="highlight"><pre>git add .
+git commit -m <span class="s2">&quot;Create post: Hello World&quot;</span>
+git push origin master
+</pre></div>
+
+
+</li>
+<li>
+<p><code>master</code> -&gt; Create <code>gh-pages</code> branch if it's not exist yet.</p>
+<div class="highlight"><pre>git branch gh-pages
+</pre></div>
+
+
+<p>Then switch to that branch.</p>
+<div class="highlight"><pre>git checkout gh-pages
+</pre></div>
+
+
+</li>
+<li>
+<p><code>gh-pages</code> -&gt; Merge the sources from <code>master</code> branch.</p>
+<div class="highlight"><pre>git merge master
+</pre></div>
+
+
+</li>
+<li>
+<p><code>gh-pages</code> -&gt; Regenerate the static contents. This time we'll use <code>local_settings.py</code> settings file and set the output path to the root of our repository, so Github Pages can find and serve the contents directly, and because we exclude default <code>output</code> dir from our Git repo so that won't be available in Github.</p>
+<div class="highlight"><pre>pelican -s ./local_settings.py -o ./
+</pre></div>
+
+
+</li>
+<li>
+<p><code>gh-pages</code> -&gt; Preview it again if you like, admire it, kiss it a good luck charm, etc etc</p>
+</li>
+<li>
+<p><code>gh-pages</code> -&gt; Commit the changes.</p>
+<div class="highlight"><pre>git add .
+git commit -m <span class="s2">&quot;Publish post Hello World, to the World&quot;</span>
+git push origin gh-pages
+<span class="c"># Remember to switch to master after publishing</span>
+git checkout master
+</pre></div>
+
+
+</li>
+<li>
+<p>Visit your Github Pages in a browser with URL <code>http://youraccount.github.io/blog</code> to see what world see in your blog.</p>
+</li>
+<li>
+<p>Do step 5 again for as much as you want, or make another post if you have lots to share to world.</p>
+</li>
+</ol>
+<p><a name="next"></a></p>
+<h2>What's Next</h2>
+<p><a name="domain"></a></p>
+<h3>Custom Domain with Github Pages</h3>
+<p>Now maybe you want to use your more attractive domain for your blog, like this blog. Here is how to do that</p>
+<ol>
+<li>
+<p>Create a text file named <code>CNAME</code> in the root dir of your <code>gh-pages</code> branch.</p>
+<div class="highlight"><pre>git checkout gh-pages
+touch CNAME
+</pre></div>
+
+
+</li>
+<li>
+<p>Write the domain you want to use in there.</p>
+<div class="highlight"><pre>blog.derp.com
+</pre></div>
+
+
+</li>
+<li>
+<p>Push the change.</p>
+<div class="highlight"><pre>git add .
+git commit -m <span class="s2">&quot;Use blog.derp.com domain&quot;</span>
+git push origin gh-pages
+git checkout master
+</pre></div>
+
+
+</li>
+<li>
+<p>Go to your domain's registrar or wherever you can <em>properly</em> add a DNS record to your domain. Create a new <code>CNAME</code> record and point it to <code>youraccount.github.io</code>.</p>
+</li>
+<li>
+<p>Wait a little while for the change propagate. This may take minutes or even hours.</p>
+</li>
+</ol>
+<p>To see a more detailed explanation, for example to setup an apex / top-level domain like <code>derp.com</code> instead of <code>blog.derp.com</code> like above, go to this <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Github Help Article</a></p>
+<p><a name="automation"></a></p>
+<h3>Automation Tool</h3>
+<p>With above workflow, it'll become much more repetitive as you develop later. We can cut number of commands we input to create / publish a post with <em>automation tool</em>.</p>
+<p>There are a lot of automation / task management we can use in Pelican blog project such as</p>
+<ul>
+<li>
+<p><a href="http://www.fabfile.org/"><strong>Fabric</strong></a> A Python (2.5-2.7) library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks. It provides a basic suite of operations for executing local or remote shell commands. </p>
+<p>For a Python based project, a Python tool like this is usefull and doesn't nedd anyother dependencies / language framework. But if you use Python &gt; 3.0, Fabric doesn't support it, as of this time of writing. I'll update this if a version which support Python &gt; 3.0 is available via <code>pip</code>.</p>
+</li>
+<li>
+<p><a href="http://gruntjs.com/"><strong>Grunt</strong></a> JavaScript Task Runner. If you have Node.js installed, this automation tool is great for any project. Even better, someone made a plugin <a href="https://github.com/chuwy/grunt-pelican">grunt-pelican</a> to generate static contents with Pelican, great!! I'll write about how to do this in a post sometime.</p>
+</li>
+</ul>
+<p><a name="alternatives"></a></p>
+<h2>Alternatives</h2>
+<p>Static publishing is fun and beside Pelican there are other tools you can use</p>
+<ul>
+<li>
+<p><a href="https://pythonhosted.org/Frozen-Flask/"><strong>Frozen-Flask</strong></a> freezes a <a href="http://flask.pocoo.org/">Flask</a> application into a set of static files. It uses Flask, a microframework for Python based on Werkzeug, Jinja 2 and good intentions.</p>
+</li>
+<li>
+<p><a href="http://jekyllrb.com/"><strong>Jekyll</strong></a> Transform your plain text into static websites and blogs. It's made with <a href="https://www.ruby-lang.org/en/">Ruby</a> language and the one which powers the Github Pages.</p>
+</li>
+<li>
+<p><a href="http://octopress.org/"><strong>Octopress</strong></a> A framework for Jekyll. It gives a basic Jekyll project with ton of features such as <code>rake</code> tasks to manage creation and content publishing, a semantic HTML5 template, responsive layout, Built in 3rd party support for Twitter, Google Plus, Disqus, and many more.</p>
+</li>
+</ul>
+<p><a name="tada"></a></p>
+<h2>Tada</h2>
+<p>There you are, what a fun way to make blog isn't it? :)</p>
+<p>Hope this helps you start your own Pelican blog. If you have any suggestion or want to share your experience, please tell me more about it, Thanks!</p>
+  </div>
+  <div class="article_meta">
+    <p>Author: <a href="http://blog.panjiesw.com/author/panjie-setiawan-wicaksono.html">Panjie Setiawan Wicaksono</a></p>
+    <p>Category: <a href="http://blog.panjiesw.com/category/codes.html">Codes</a></p>
+    <p>Tags:
+      <a href="http://blog.panjiesw.com/tag/pelican.html">pelican</a>,      <a href="http://blog.panjiesw.com/tag/python.html">python</a>    </p>
+    <p>Comments: <a href="#" onclick="javascript:toggleComments();return false;">toggle</a></p>
+  </div>
+
+    <div id="article_comments" style="display:block">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+           var disqus_identifier = "static-blog-with-pelican";
+           (function() {
+           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+           dsq.src = 'http://panjieblog.disqus.com/embed.js';
+           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+    </div>
+
+</article>
+
+    <footer>
+<p><a href="http://blog.panjiesw.com/" class="button_accent">&larr; Back to Index</a></p>
+<script language="javascript">
+    function toggleComments() {
+        var commentDiv = document.getElementById("article_comments");
+        (commentDiv.style.display == "none") ? commentDiv.style.display = "block" : commentDiv.style.display = "none";
+        return false;
+    }
+</script>
+    </footer>
+
+    <div id="ending_message">
+      <p>&copy; Panjie SW. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/giulivo/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

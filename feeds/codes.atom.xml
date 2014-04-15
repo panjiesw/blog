@@ -1,5 +1,403 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Panjie SW's Blog</title><link href="http://blog.panjiesw.com/" rel="alternate"></link><link href="http://blog.panjiesw.com/feeds/codes.atom.xml" rel="self"></link><id>http://blog.panjiesw.com/</id><updated>2013-09-26T00:00:00+07:00</updated><entry><title>AngularJS Normal Links with HTML5 Mode</title><link href="http://blog.panjiesw.com/posts/2013/09/angularjs-normal-links-with-html5mode/" rel="alternate"></link><updated>2013-09-26T00:00:00+07:00</updated><author><name>Panjie Setiawan Wicaksono</name></author><id>tag:blog.panjiesw.com,2013-09-26:posts/2013/09/angularjs-normal-links-with-html5mode/</id><summary type="html">&lt;p&gt;Yeah! At last, some code in this boring blog! :p&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Panjie SW's Blog</title><link href="http://blog.panjiesw.com/" rel="alternate"></link><link href="http://blog.panjiesw.com/feeds/codes.atom.xml" rel="self"></link><id>http://blog.panjiesw.com/</id><updated>2014-04-13T00:00:00+07:00</updated><entry><title>Static Blog with Pelican</title><link href="http://blog.panjiesw.com/posts/2014/04/static-blog-with-pelican/" rel="alternate"></link><updated>2014-04-13T00:00:00+07:00</updated><author><name>Panjie Setiawan Wicaksono</name></author><id>tag:blog.panjiesw.com,2014-04-13:posts/2014/04/static-blog-with-pelican/</id><summary type="html">&lt;p&gt;Been months since my last blog post lol :)) I'll begin to cover my lack of writing enthusiasm by writing about, well, how i create this blog, a happy static site hosted in Github Pages.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; is a static site publishing tool. This blog of mine is one of running example using Pelican. This awesome Python based tool is simple, tidy while also has the power to be extendable and scalable. Combine it with &lt;a href="https://pages.github.com"&gt;gh-pages&lt;/a&gt; of Github and you will get a fun and &lt;em&gt;free&lt;/em&gt; blogging experience without the much more bloated system in &lt;em&gt;conventional&lt;/em&gt; CMS.&lt;/p&gt;
+&lt;p&gt;You can see a list of Pelican feature at their &lt;a href="http://blog.getpelican.com/"&gt;blog&lt;/a&gt;. Some of features i'd like to mention are &lt;strong&gt;Markdown + rst content writing&lt;/strong&gt; and &lt;strong&gt;Code syntax highlighting&lt;/strong&gt;. Markdown and rst are a pleasant to work in writing content. Instead of HTML tag or button-clicking / shortcut remembering in WYSIWYG rich text editor, they let you concentrate in making a great writing with a little syntax. And as this blog will mostly be filled with techie code things (among my other randomness), code syntax highlighting of &lt;strong&gt;Pygments&lt;/strong&gt; will surely comes in handy. Already have a site of contents published in &lt;strong&gt;WordPress&lt;/strong&gt;? Pelican can import it to static Pelican compatible contents. GREAT!! Enough &lt;em&gt;blabbering&lt;/em&gt; and let's get started :)&lt;/p&gt;
+&lt;h2&gt;Jumps To&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#requirements"&gt;Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#github"&gt;Setting up Github account and Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#setup-env"&gt;Setting Up Our Development Environment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#install-pelican"&gt;Installing Pelican&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#project-structure"&gt;The Project Structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#workflow"&gt;The Workflow&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#createpost"&gt;Creating a Blog Post&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#publishing"&gt;Publishing Contents&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#next"&gt;What's Next&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#domain"&gt;Custom Domain with Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#automation"&gt;Automation Tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#alternatives"&gt;Alternatives&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name="requirements"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Python &lt;code&gt;&amp;gt;=2.6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Github account&lt;/li&gt;
+&lt;li&gt;Git&lt;/li&gt;
+&lt;li&gt;Writing and tinkering enthusiasm :p&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name="github"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Setting Up Github Account and Github Pages&lt;/h2&gt;
+&lt;p&gt;We'll use Github Pages as our static content host. As it's static, your contents can easily be hosted anywhere. But with Git, you can track and get version history of your contents. Besides, it's free!!&lt;/p&gt;
+&lt;p&gt;Go to &lt;a href="https://github.com/"&gt;Github&lt;/a&gt; and sign a new account up if you haven't had one, then create a new repository for our blog. For this tutorial i'll name it &lt;code&gt;blog&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now, for our blog to be accessible, we need to create a new branch called &lt;code&gt;gh-pages&lt;/code&gt; and place our site content (.html, .css files, images, etc.) into it. Later, your blog will have a URL like &lt;code&gt;http://youraccount.github.io/blog&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Personally, i'd like to organize my branches like so:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;// in &amp;#39;master&amp;#39; (default branch)
+blog
+├── .gitignore
+├── local_settings.py
+├── local_settings_dev.py
+├── README.md
+├── requirements.txt
+├── settings.py
+├── plugins
+    ├── plugin_one.py
+    ├── other_plugin.py
+├── src
+    ├── posts
+        ├── 2014
+            ├── 01
+                ├── some-post.md
+                ├── another-post.md
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And in &lt;code&gt;gh-pages&lt;/code&gt; branch, includes all above structures &lt;strong&gt;plus&lt;/strong&gt; generated static content in root &lt;code&gt;blog&lt;/code&gt; directory. Messy, don't you think? Don't worry, we'll do almost all work in &lt;code&gt;master&lt;/code&gt; branch so it's ok to have a messy &lt;code&gt;gh-pages&lt;/code&gt;, i think.&lt;/p&gt;
+&lt;p&gt;&lt;a name="setup-env"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Setting Up Our Development Environment&lt;/h2&gt;
+&lt;p&gt;If you already have &lt;code&gt;pip&lt;/code&gt; and &lt;code&gt;virtualenv&lt;/code&gt; set, then you can skip to the &lt;a href="#install-pelican"&gt;next section&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Install &lt;code&gt;setuptools&lt;/code&gt;. Download &lt;a href="https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py"&gt;ez_setup.py&lt;/a&gt; and run it using target Python version. This will install &lt;code&gt;easy_install&lt;/code&gt; CLI command to manage packages.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;or, to install to the system Python&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install &lt;code&gt;pip&lt;/code&gt;. Using &lt;code&gt;easy_install&lt;/code&gt; above, use superuser privileges if needed.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;easy_install pip
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install &lt;code&gt;virtualenv&lt;/code&gt;. Virtualenv is an environment wrapper to run and install Python packages independent to the system Python packages.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a new virtual environment for our blog project. In this tutorial, i'll name it &lt;code&gt;blog-env&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;virtualenv blog-env
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Activate the virtual environment.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;blog-env
+&lt;span class="nb"&gt;source&lt;/span&gt; ./bin/activate
+&lt;span class="c"&gt;# to deactivate it&lt;/span&gt;
+deactivate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name="install-pelican"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Installing Pelican&lt;/h2&gt;
+&lt;p&gt;To get Pelican to work we'll need to install it. &lt;em&gt;duh&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In our activated virtualenv &lt;code&gt;blog-env&lt;/code&gt;, run this command&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install pelican
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a name="project-structure"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;The Project Structure&lt;/h2&gt;
+&lt;p&gt;Inside the &lt;code&gt;blog-env&lt;/code&gt; folder, create a folder for our blog project, i'll call it &lt;code&gt;blog&lt;/code&gt; same as our repository name we created earlier. Then we need to setup a local git in this folder.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;blog
+&lt;span class="c"&gt;# Initialize git&lt;/span&gt;
+git init .
+&lt;span class="c"&gt;# Add remote origin&lt;/span&gt;
+git remote add origin git@github.com:youraccount/blog.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create a directory structure of &lt;code&gt;blog&lt;/code&gt; like in master branch organization above. I'll explain each of its use.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;.gitignore&lt;/code&gt;, place here any path you don't want to include in your git repository. Here is the example content you can use.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;local_settings*.py
+output
+
+&lt;span class="c"&gt;# Python&lt;/span&gt;
+*.py&lt;span class="o"&gt;[&lt;/span&gt;cod&lt;span class="o"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;# C extensions&lt;/span&gt;
+*.so
+
+&lt;span class="c"&gt;# Packages&lt;/span&gt;
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+&lt;span class="c"&gt;# Installer logs&lt;/span&gt;
+pip-log.txt
+
+&lt;span class="c"&gt;# Unit test / coverage reports&lt;/span&gt;
+.coverage
+.tox
+nosetests.xml
+
+&lt;span class="c"&gt;# Translations&lt;/span&gt;
+*.mo
+
+&lt;span class="c"&gt;# Mr Developer&lt;/span&gt;
+.mr.developer.cfg
+.project
+.pydevproject
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;local_settings.py&lt;/code&gt;, contains Pelican settings used in deploying the blog, while &lt;code&gt;local_settings_dev.py&lt;/code&gt; is used in development. Like this, we can customize the settings both when in development, and when we're ready to publish in &lt;code&gt;gh-pages&lt;/code&gt; branch.&lt;/p&gt;
+&lt;p&gt;We don't want to include this in our repo because it may contain personal data.&lt;/p&gt;
+&lt;p&gt;You can see all Pelican available settings &lt;a href="http://pelican.readthedocs.org/en/3.3.0/settings.html"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;settings.py&lt;/code&gt;, contains the same contents as &lt;code&gt;local_settings*&lt;/code&gt; except we strip all value from it. We'll make this as our reminder of how our settings are defined and include it in our repository. Here is an example of &lt;code&gt;settings.py&lt;/code&gt; contents&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;xxxxxxxx xxxxxxxxxxxxx&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;xxxxxxxxxxxx&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://xxxxxxxxxxxxxxxxx&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Europe/Madrid&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;GITHUB_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://github.com/XXXXX&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DISQUS_SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;XXXXXXXXXX&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;EMAIL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;XXXXXXXXXXXXXX@gmail.com&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;PDF_GENERATOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;REVERSE_CATEGORY_ORDER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;LOCALE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;en_US&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;iris&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;feeds/all.rss.xml&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;feeds/&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.rss.xml&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;LINKS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;XXXXX XXXX&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://YYYYYYYYYYY.ZZZ&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+
+&lt;span class="n"&gt;SOCIAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;twitter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://twitter.com/XXXXXX&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;linkedin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://www.linkedin.com/in/XXXXXXX&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;github&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;GITHUB_URL&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+
+&lt;span class="n"&gt;OUTPUT_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;output&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;src&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;ARTICLE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;posts/{date:%Y}/{date:%m}/{slug}/&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;ARTICLE_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;posts/{date:%Y}/{date:%m}/{slug}/index.html&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;GOSQUARED_SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;XXX-YYYYYY-X&amp;quot;&lt;/span&gt;
+
+&lt;span class="c"&gt;# global metadata to all the contents&lt;/span&gt;
+&lt;span class="c"&gt;#DEFAULT_METADATA = ((&amp;#39;yeah&amp;#39;, &amp;#39;it is&amp;#39;),)&lt;/span&gt;
+
+&lt;span class="c"&gt;# static paths will be copied under the same name&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;# A list of files to copy from the source to the destination&lt;/span&gt;
+&lt;span class="c"&gt;#FILES_TO_COPY = ((&amp;#39;extra/robots.txt&amp;#39;, &amp;#39;robots.txt&amp;#39;),)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;plugins&lt;/code&gt; folder contains all Pelican plugins used in our blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src&lt;/code&gt; folder contains all Pelican sources which will be generated to static contents. Inside it, there is a &lt;code&gt;posts&lt;/code&gt; folder which contains all our blog posts organized by year, month and date of publishing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name="workflow"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;The Workflow&lt;/h2&gt;
+&lt;p&gt;Now that everything is setup, let's define a workflow to write and publish our post.&lt;/p&gt;
+&lt;p&gt;We have 2 branches in our local git repo&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;master&lt;/code&gt; contains the sources of the blog. We'll write a new &lt;code&gt;markdown&lt;/code&gt; or &lt;code&gt;rst&lt;/code&gt; file for our posts here, add images, and stuff. Basically we do almost all the work in this branch.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gh-pages&lt;/code&gt; contains the static content generated from the sources. We'll merge the sources from &lt;code&gt;master&lt;/code&gt; branch and regenerate the static contents.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name="createpost"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Creating a Blog Post&lt;/h3&gt;
+&lt;p&gt;To create a blog post, we'll do these steps, in &lt;code&gt;master&lt;/code&gt; branch of our repository.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;master&lt;/code&gt; -&amp;gt; Write the post with &lt;code&gt;markdown&lt;/code&gt; or &lt;code&gt;rst&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p src/posts/2014/04
+touch src/posts/2014/04/hello-world.md
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;master&lt;/code&gt; -&amp;gt; Generate the static contents to default output path, which is folder &lt;code&gt;output&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican -s ./local_settings_dev.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;master&lt;/code&gt; -&amp;gt; Preview the generated static contents in a local server. These commands will run a local server in &lt;code&gt;localhost:8000&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;output
+&lt;span class="c"&gt;# using python 2.6 or 2.7&lt;/span&gt;
+python -m SimpleHTTPServer
+&lt;span class="c"&gt;# using python 3.x&lt;/span&gt;
+python3 -m http.server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can repeat those steps in development time as much as needed until you satisfied and ready to publish the contents.&lt;/p&gt;
+&lt;p&gt;&lt;a name="publishing"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Publishing Contents&lt;/h3&gt;
+&lt;p&gt;When you're ready to publish your contents, we'll do these steps, in &lt;code&gt;gh-pages&lt;/code&gt; of our repository.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;master&lt;/code&gt; -&amp;gt; Commit the sources change and push it to Github. This won't be the blog, it's just our sources.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;Create post: Hello World&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;master&lt;/code&gt; -&amp;gt; Create &lt;code&gt;gh-pages&lt;/code&gt; branch if it's not exist yet.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git branch gh-pages
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then switch to that branch.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git checkout gh-pages
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;gh-pages&lt;/code&gt; -&amp;gt; Merge the sources from &lt;code&gt;master&lt;/code&gt; branch.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git merge master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;gh-pages&lt;/code&gt; -&amp;gt; Regenerate the static contents. This time we'll use &lt;code&gt;local_settings.py&lt;/code&gt; settings file and set the output path to the root of our repository, so Github Pages can find and serve the contents directly, and because we exclude default &lt;code&gt;output&lt;/code&gt; dir from our Git repo so that won't be available in Github.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican -s ./local_settings.py -o ./
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;gh-pages&lt;/code&gt; -&amp;gt; Preview it again if you like, admire it, kiss it a good luck charm, etc etc&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;gh-pages&lt;/code&gt; -&amp;gt; Commit the changes.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;Publish post Hello World, to the World&amp;quot;&lt;/span&gt;
+git push origin gh-pages
+&lt;span class="c"&gt;# Remember to switch to master after publishing&lt;/span&gt;
+git checkout master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Visit your Github Pages in a browser with URL &lt;code&gt;http://youraccount.github.io/blog&lt;/code&gt; to see what world see in your blog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Do step 5 again for as much as you want, or make another post if you have lots to share to world.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a name="next"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;What's Next&lt;/h2&gt;
+&lt;p&gt;&lt;a name="domain"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Custom Domain with Github Pages&lt;/h3&gt;
+&lt;p&gt;Now maybe you want to use your more attractive domain for your blog, like this blog. Here is how to do that&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a text file named &lt;code&gt;CNAME&lt;/code&gt; in the root dir of your &lt;code&gt;gh-pages&lt;/code&gt; branch.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git checkout gh-pages
+touch CNAME
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Write the domain you want to use in there.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;blog.derp.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Push the change.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;Use blog.derp.com domain&amp;quot;&lt;/span&gt;
+git push origin gh-pages
+git checkout master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Go to your domain's registrar or wherever you can &lt;em&gt;properly&lt;/em&gt; add a DNS record to your domain. Create a new &lt;code&gt;CNAME&lt;/code&gt; record and point it to &lt;code&gt;youraccount.github.io&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wait a little while for the change propagate. This may take minutes or even hours.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To see a more detailed explanation, for example to setup an apex / top-level domain like &lt;code&gt;derp.com&lt;/code&gt; instead of &lt;code&gt;blog.derp.com&lt;/code&gt; like above, go to this &lt;a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages"&gt;Github Help Article&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name="automation"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Automation Tool&lt;/h3&gt;
+&lt;p&gt;With above workflow, it'll become much more repetitive as you develop later. We can cut number of commands we input to create / publish a post with &lt;em&gt;automation tool&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;There are a lot of automation / task management we can use in Pelican blog project such as&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.fabfile.org/"&gt;&lt;strong&gt;Fabric&lt;/strong&gt;&lt;/a&gt; A Python (2.5-2.7) library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks. It provides a basic suite of operations for executing local or remote shell commands. &lt;/p&gt;
+&lt;p&gt;For a Python based project, a Python tool like this is usefull and doesn't nedd anyother dependencies / language framework. But if you use Python &amp;gt; 3.0, Fabric doesn't support it, as of this time of writing. I'll update this if a version which support Python &amp;gt; 3.0 is available via &lt;code&gt;pip&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://gruntjs.com/"&gt;&lt;strong&gt;Grunt&lt;/strong&gt;&lt;/a&gt; JavaScript Task Runner. If you have Node.js installed, this automation tool is great for any project. Even better, someone made a plugin &lt;a href="https://github.com/chuwy/grunt-pelican"&gt;grunt-pelican&lt;/a&gt; to generate static contents with Pelican, great!! I'll write about how to do this in a post sometime.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name="alternatives"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Alternatives&lt;/h2&gt;
+&lt;p&gt;Static publishing is fun and beside Pelican there are other tools you can use&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://pythonhosted.org/Frozen-Flask/"&gt;&lt;strong&gt;Frozen-Flask&lt;/strong&gt;&lt;/a&gt; freezes a &lt;a href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; application into a set of static files. It uses Flask, a microframework for Python based on Werkzeug, Jinja 2 and good intentions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://jekyllrb.com/"&gt;&lt;strong&gt;Jekyll&lt;/strong&gt;&lt;/a&gt; Transform your plain text into static websites and blogs. It's made with &lt;a href="https://www.ruby-lang.org/en/"&gt;Ruby&lt;/a&gt; language and the one which powers the Github Pages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://octopress.org/"&gt;&lt;strong&gt;Octopress&lt;/strong&gt;&lt;/a&gt; A framework for Jekyll. It gives a basic Jekyll project with ton of features such as &lt;code&gt;rake&lt;/code&gt; tasks to manage creation and content publishing, a semantic HTML5 template, responsive layout, Built in 3rd party support for Twitter, Google Plus, Disqus, and many more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a name="tada"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Tada&lt;/h2&gt;
+&lt;p&gt;There you are, what a fun way to make blog isn't it? :)&lt;/p&gt;
+&lt;p&gt;Hope this helps you start your own Pelican blog. If you have any suggestion or want to share your experience, please tell me more about it, Thanks!&lt;/p&gt;</summary><category term="pelican"></category><category term="python"></category></entry><entry><title>AngularJS Normal Links with HTML5 Mode</title><link href="http://blog.panjiesw.com/posts/2013/09/angularjs-normal-links-with-html5mode/" rel="alternate"></link><updated>2013-09-26T00:00:00+07:00</updated><author><name>Panjie Setiawan Wicaksono</name></author><id>tag:blog.panjiesw.com,2013-09-26:posts/2013/09/angularjs-normal-links-with-html5mode/</id><summary type="html">&lt;p&gt;Yeah! At last, some code in this boring blog! :p&lt;/p&gt;
 &lt;p&gt;Since the first time i played with &lt;a href="http://angularjs.org"&gt;AngularJS&lt;/a&gt; i have been enjoying the experience of developing a rich web application. I won't describe what it is or compare it with other client side javascript frameworks out there here right now, maybe some other time. Instead, also as a kind of note for myself, i will only write here a portion of one of its feature, HTML5 Mode in $location service.&lt;/p&gt;
 &lt;p&gt;HTML5 Mode, a configuration mode of &lt;a href="http://docs.angularjs.org/api/ng.$location"&gt;$location service&lt;/a&gt; in angularjs, uses HTML5 History API which one of its usage is to enrich client side interaction in a web application. When the $location service configured with this mode, browser will not do a full page reload when its URL is changed, without the need of hashbang &lt;code&gt;#!&lt;/code&gt; in part of URL. But what if, in one time, you need a full page reload to react on browser's URL change? Such as signing a user out, which usually is handled by server side of your app.&lt;/p&gt;
 &lt;p&gt;For the sake of completeness(?), here is how i usually do to setup the $locationProvider to use html5 mode. Yes, i use coffeescript, it's easier to write and read, also provide a little similiar syntax as Python, which also i love.&lt;/p&gt;
