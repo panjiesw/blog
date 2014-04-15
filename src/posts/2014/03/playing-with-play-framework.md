@@ -6,6 +6,8 @@ Slug: playing-with-play-framework
 Disqus: playing-with-play-framework
 Author: Panjie Setiawan Wicaksono
 Status: draft
+meta_description: Playing with Play Framework, getting started from scratch and make a webapp using Scala.
+meta_og_description: Playing with Play Framework, getting started from scratch and make a webapp using Scala.
 Summary: In the last few months i have been working on a project using Play Framework. It's a [High Velocity Web Framework For Java and Scala](http://www.playframework.com/), built on [Akka](http://akka.io/), a toolkit and runtime for building high concurrent, distributed and fault tolerant event-driven applications on the JVM. Here in this post i'll share how enjoyable it is, playing with Play Framework and Scala.
 
 ## Preface
