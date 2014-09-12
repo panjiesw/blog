@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head %}
+<meta name="keywords" content="{{ article.tags|join(', ')  }}">
+{% endblock %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block description %}
+{% if article.meta and article.meta.description %}
+{{ article.meta.description }}
+{% else %}
+{{ article.summary }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if article.meta and article.meta.og_image %}
+  <img class="img-responsive img-bg" src="{{ SITEURL }}/{{ article.meta.og_image }}" alt="{{ article.title }}">
+  <section class="post">
+    <header class="entry-header">
+      <img class="entry-avatar" src="{{ USER_LOGO_URL }}" alt="Panjie SW" height="52" width="52">
+      <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+      <p class="entry-meta">
+      Posted on <a class="entry-date" href="{{ SITEURL }}/archives.html">{{ article.date|strftime('%B %d, %Y') }}</a> | By <a class="entry-author" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a> | Tags {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}" class="label label-{{ TAGS_LABEL[tag.name] | default('primary') }}">{{ tag }}</a>&nbsp;{% endfor %}
+      </p>
+    </header>
+    <div class="entry-description">
+      {{ article.content }}
+    </div>
+  </section>
+
+  <div class="comments">
+    {% if DISQUS_SITENAME and article.disqus %}
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_identifier = "{{ article.disqus }}";
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://{{ DISQUS_SITENAME }}.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock content %}
+

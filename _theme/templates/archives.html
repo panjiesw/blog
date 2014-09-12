@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block robots %}noindex,follow{% endblock %}
+
+{% block content %}
+  <section class="post">
+    <header class="entry-header">
+      <h2 class="entry-title"><a href="{{ SITEURL }}/archives.html">Archives</a></h2>
+    </header>
+    <div class="entry-description">
+      <dl>
+        {% for article in dates %}
+        <dt>{{ article.locale_date }}</dt>
+        <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+        {% endfor %}
+      </dl>
+    </div>
+  </section>
+{% endblock content %}
+

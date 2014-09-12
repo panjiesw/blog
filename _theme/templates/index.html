@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block robots %}noindex,follow{% endblock %}
+
+{% block content %}
+  {% for article in articles_page.object_list %}
+  <section class="post">
+    <header class="entry-header">
+      <img class="entry-avatar" src="{{ USER_LOGO_URL }}" alt="Panjie SW" height="52" width="52">
+      <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+      <p class="entry-meta">
+      Posted on <a class="entry-date" href="{{ SITEURL }}/archives.html">{{ article.date|strftime('%B %d, %Y') }}</a> | By <a class="entry-author" href="{{ article.author.url }}">{{ article.author }}</a> | Tags {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}" class="label label-{{ TAGS_LABEL[tag.name] | default('primary') }}">{{ tag }}</a>&nbsp;{% endfor %}
+      </p>
+    </header>
+    <div class="entry-description">
+      <p>{{ article.summary }}</p>
+    </div>
+  </section>
+  {% endfor %}
+{% endblock content %}
+
