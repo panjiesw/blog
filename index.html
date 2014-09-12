@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en_us.utf8">
-
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>randomness happens - Panjie SW's Blog</title>
+  <title>
+randomness happens - Panjie SW's Blog  </title>
 
   <meta name="description" content="A Blog By Panjie SW">
   <meta name="robots" content="noindex,follow">
@@ -13,108 +15,192 @@
   <meta property="og:type" content="website">
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="msapplication-TileColor" content="#FFFFFF">
   <meta name="msapplication-TileImage" content="favicon-144.png">
 
   <link rel="apple-touch-icon-precomposed" href="favicon-152.png">
 
 
-  <!-- <link rel="stylesheet/less" type="text/css" href="http://blog.panjiesw.com/theme/css/style.less"> -->
-  <!-- <script src="http://blog.panjiesw.com/theme/js/less-1.5.0.min.js" type="text/javascript"></script> -->
-  <link rel="stylesheet" type="text/css" href="http://blog.panjiesw.com/theme/css/style.css">
+  <!-- Fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="http://blog.panjiesw.com/theme/css/pygments.css">
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:800,400,300" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap-theme.min.css" type="text/css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+
+  <link rel="stylesheet" href="http://blog.panjiesw.com/theme/css/bootstrap-social.css" type="text/css">
+  <link rel="stylesheet" href="http://blog.panjiesw.com/theme/css/pygments-monokai.css" type="text/css">
+  <link rel="stylesheet" href="http://blog.panjiesw.com/theme/css/main.css" type="text/css">
 
   <link href="http://blog.panjiesw.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Panjie SW's Blog Full Atom Feed" />
 
+  <SCRIPT TYPE="text/javascript">
+    function popup(mylink, windowname)
+  {
+  if (! window.focus)return true;
+  var href;
+  if (typeof(mylink) == 'string')
+    href=mylink;
+  else
+    href=mylink.href;
+  window.open(href, windowname, 'width=600,height=400,scrollbars=yes');
+  return false;
+  }
+  </SCRIPT>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <!-- Loading Bar -->
+  <script src="http://blog.panjiesw.com/theme/js/pace.min.js" type="text/javascript"></script>
+  <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 
-  ga('create', 'UA-30473301-1', 'panjiesw.com');
-  ga('send', 'pageview');
+  <!-- HTML5 shiv for IE8 support -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <![endif]-->
 
-</script>
+
 </head>
-
 <body>
+
+<div id="secondary" class="col-sm-3 sidebar" style="display: none;">
   <aside>
-    <div id="user_meta">
-      <a href="http://blog.panjiesw.com">
-        <img src="http://blog.panjiesw.com/static/images/pict.png" alt="logo">
-      </a>
-      <h2><a href="http://blog.panjiesw.com">Panjie SW</a></h2>
-      <p>randomness happens</p>
+
+    <div class="about">
+      <h4>randomness happens</h4>
+      <p>Hi, I'm Panjie SW. Here you are reading some of my random things I do in front of my old laptop.</p>
+    </div>
+
+    <div class="tags">
+      <h4>Tags</h4>
       <ul>
-        <li><a href="http://blog.panjiesw.com/categories">Categories</a></li>
-        <li><a href="http://blog.panjiesw.com/tags">Tags</a></li>
-      </ul>
-      <ul>
-        <li><a href="https://twitter.com/panjiesw">@panjiesw</a></li>
-        <li><a href="http://github.com/panjiesw">Github</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/first.html" class="label label-primary">first</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/pelican.html" class="label label-warning">pelican</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/coffeescript.html" class="label label-danger">coffeescript</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/her.html" class="label label-primary">her</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/helloworld.html" class="label label-primary">helloworld</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/randomness.html" class="label label-primary">randomness</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/javascript.html" class="label label-danger">javascript</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/late-night.html" class="label label-primary">late-night</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/reminder.html" class="label label-primary">reminder</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/html5.html" class="label label-primary">html5</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/python.html" class="label label-warning">python</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/person.html" class="label label-primary">person</a></li>
+          <li><a href="http://blog.panjiesw.com/tag/angularjs.html" class="label label-danger">angularjs</a></li>
       </ul>
     </div>
+
+    <div class="categories">
+      <h4>Categories</h4>
+      <ul>
+          <li><a href="http://blog.panjiesw.com/category/randomness.html" class="label label-primary">Randomness</a></li>
+          <li><a href="http://blog.panjiesw.com/category/codes.html" class="label label-primary">Codes</a></li>
+      </ul>
+    </div>
+
+    <div class="socialmedia">
+      <h4>Share</h4>
+      <div class="socials-sidebar">
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.panjiesw.com" onClick="return popup(this, 'facebook');" title="Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a class="btn btn-twitter" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fblog.panjiesw.com&via=panjiesw&text=Panjie+SW%27s+Blog+-+randomness+happens" title="Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://blog.panjiesw.com" onClick="return popup(this, 'google-plus');" title="Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.panjiesw.com&title=Panjie%20SW's%20Blog&summary=randomness%20happen&source=http://blog.panjiesw.com" onClick="return popup(this, 'linkedin');" title="LinkedIn">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+
   </aside>
-
-  <main>
-    <header>
-      <p>
-      <a href="http://blog.panjiesw.com">Index</a> &#124; <a href="http://blog.panjiesw.com/archives.html">Archives</a>
-      &#124; <a href="http://blog.panjiesw.com/feeds/all.atom.xml">Atom Feed</a>
-      </p>
-    </header>
-
-<article>
-  <div class="article_title">
-    <h3><a href="http://blog.panjiesw.com/posts/2014/04/static-blog-with-pelican/">Static Blog with Pelican</a></h3>
-  </div>
-  <div class="article_text">
-    <p><a href="http://blog.getpelican.com/">Pelican</a> is a static site publishing tool. This blog of mine is one of running example using Pelican. This awesome Python based tool is simple, tidy while also has the power to be extendable and scalable. Combine it with <a href="https://pages.github.com">gh-pages</a> of Github and you will get a fun and <em>free</em> blogging experience without the much more bloated system in <em>conventional</em> CMS. Enough <em>blabbering</em>, let's get started!</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="http://blog.panjiesw.com/posts/2013/09/angularjs-normal-links-with-html5mode/">AngularJS Normal Links with HTML5 Mode</a></h3>
-  </div>
-  <div class="article_text">
-    <p>HTML5 Mode, a configuration mode of <a href="http://docs.angularjs.org/api/ng.$location">$location service</a> in angularjs, uses HTML5 History API which one of its usage is to enrich client side interaction in a web application. When the $location service configured with this mode, browser will not do a full page reload when its URL is changed, without the need of hashbang <code>#!</code> in part of URL. But what if, in one time, you need a full page reload to react on browser's URL change? Such as signing a user out, which usually is handled by server side of your app.</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="http://blog.panjiesw.com/posts/2013/09/this-kind-of-person/">This Kind Of Person</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Most of you might agree with me on this one, that there's always someone in your life whom you love very much, but cannot be with. And whoever you'll meet, whatever you'll do, nothing would like it would be with that one.</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="http://blog.panjiesw.com/posts/2013/06/hello-world/">Hello World!</a></h3>
-  </div>
-  <div class="article_text">
-    <p>My first blog post.</p>
-  </div>
-</article>
-
-    <footer>
-<div id="paginator">
-
 </div>
-    </footer>
+  <div id="primary" class="col-sm-12">
+    <div class="content">
 
-    <div id="ending_message">
-      <p>&copy; Panjie SW. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/giulivo/pelican-svbhack" target="_blank">github</a>. .</p>
+      <header class="header">
+        <hgroup class="pull-left">
+          <h1 class="site-title">
+            <a rel="home" title="Panjie SW's Blog" href="/">
+              <i class="fa fa-lemon-o"></i> Panjie SW's Blog
+            </a>
+          </h1>
+        </hgroup>
+        <div id="togglesidebar" class="btn btn-primary pull-right">
+          <i class="fa fa-bars"></i>
+        </div>
+      </header>
+
+  <section class="post">
+    <header class="entry-header">
+      <img class="entry-avatar" src="http://blog.panjiesw.com/static/images/pict.png" alt="Panjie SW" height="52" width="52">
+      <h2 class="entry-title"><a href="http://blog.panjiesw.com/posts/2014/04/static-blog-with-pelican/">Static Blog with Pelican</a></h2>
+      <p class="entry-meta">
+      Posted on <a class="entry-date" href="http://blog.panjiesw.com/archives.html">April 13, 2014</a> | By <a class="entry-author" href="author/panjie-setiawan-wicaksono.html">Panjie Setiawan Wicaksono</a> | Tags <a href="http://blog.panjiesw.com/tag/pelican.html" class="label label-warning">pelican</a>&nbsp;<a href="http://blog.panjiesw.com/tag/python.html" class="label label-warning">python</a>&nbsp;      </p>
+    </header>
+    <div class="entry-description">
+      <p><p><a href="http://blog.getpelican.com/">Pelican</a> is a static site publishing tool. This blog of mine is one of running example using Pelican. This awesome Python based tool is simple, tidy while also has the power to be extendable and scalable. Combine it with <a href="https://pages.github.com">gh-pages</a> of Github and you will get a fun and <em>free</em> blogging experience without the much more bloated system in <em>conventional</em> CMS. Enough <em>blabbering</em>, let's get started!</p></p>
     </div>
-  </main>
+  </section>
+  <section class="post">
+    <header class="entry-header">
+      <img class="entry-avatar" src="http://blog.panjiesw.com/static/images/pict.png" alt="Panjie SW" height="52" width="52">
+      <h2 class="entry-title"><a href="http://blog.panjiesw.com/posts/2013/09/angularjs-normal-links-with-html5mode/">AngularJS Normal Links with HTML5 Mode</a></h2>
+      <p class="entry-meta">
+      Posted on <a class="entry-date" href="http://blog.panjiesw.com/archives.html">September 26, 2013</a> | By <a class="entry-author" href="author/panjie-setiawan-wicaksono.html">Panjie Setiawan Wicaksono</a> | Tags <a href="http://blog.panjiesw.com/tag/javascript.html" class="label label-danger">javascript</a>&nbsp;<a href="http://blog.panjiesw.com/tag/coffeescript.html" class="label label-danger">coffeescript</a>&nbsp;<a href="http://blog.panjiesw.com/tag/angularjs.html" class="label label-danger">angularjs</a>&nbsp;<a href="http://blog.panjiesw.com/tag/html5.html" class="label label-primary">html5</a>&nbsp;<a href="http://blog.panjiesw.com/tag/reminder.html" class="label label-primary">reminder</a>&nbsp;      </p>
+    </header>
+    <div class="entry-description">
+      <p><p>HTML5 Mode, a configuration mode of <a href="http://docs.angularjs.org/api/ng.$location">$location service</a> in angularjs, uses HTML5 History API which one of its usage is to enrich client side interaction in a web application. When the $location service configured with this mode, browser will not do a full page reload when its URL is changed, without the need of hashbang <code>#!</code> in part of URL. But what if, in one time, you need a full page reload to react on browser's URL change? Such as signing a user out, which usually is handled by server side of your app.</p></p>
+    </div>
+  </section>
+  <section class="post">
+    <header class="entry-header">
+      <img class="entry-avatar" src="http://blog.panjiesw.com/static/images/pict.png" alt="Panjie SW" height="52" width="52">
+      <h2 class="entry-title"><a href="http://blog.panjiesw.com/posts/2013/09/this-kind-of-person/">This Kind Of Person</a></h2>
+      <p class="entry-meta">
+      Posted on <a class="entry-date" href="http://blog.panjiesw.com/archives.html">September 07, 2013</a> | By <a class="entry-author" href="author/panjie-setiawan-wicaksono.html">Panjie Setiawan Wicaksono</a> | Tags <a href="http://blog.panjiesw.com/tag/person.html" class="label label-primary">person</a>&nbsp;<a href="http://blog.panjiesw.com/tag/randomness.html" class="label label-primary">randomness</a>&nbsp;<a href="http://blog.panjiesw.com/tag/late-night.html" class="label label-primary">late-night</a>&nbsp;<a href="http://blog.panjiesw.com/tag/her.html" class="label label-primary">her</a>&nbsp;      </p>
+    </header>
+    <div class="entry-description">
+      <p><p>Most of you might agree with me on this one, that there's always someone in your life whom you love very much, but cannot be with. And whoever you'll meet, whatever you'll do, nothing would like it would be with that one.</p></p>
+    </div>
+  </section>
+  <section class="post">
+    <header class="entry-header">
+      <img class="entry-avatar" src="http://blog.panjiesw.com/static/images/pict.png" alt="Panjie SW" height="52" width="52">
+      <h2 class="entry-title"><a href="http://blog.panjiesw.com/posts/2013/06/hello-world/">Hello World!</a></h2>
+      <p class="entry-meta">
+      Posted on <a class="entry-date" href="http://blog.panjiesw.com/archives.html">June 27, 2013</a> | By <a class="entry-author" href="author/panjie-setiawan-wicaksono.html">Panjie Setiawan Wicaksono</a> | Tags <a href="http://blog.panjiesw.com/tag/helloworld.html" class="label label-primary">helloworld</a>&nbsp;<a href="http://blog.panjiesw.com/tag/randomness.html" class="label label-primary">randomness</a>&nbsp;<a href="http://blog.panjiesw.com/tag/first.html" class="label label-primary">first</a>&nbsp;      </p>
+    </header>
+    <div class="entry-description">
+      <p><p>My first blog post.</p></p>
+    </div>
+  </section>
+
+      <footer class="footer">
+        <p>&copy; Panjie SW. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>.</p>
+        <div class="socials-footer">
+          <a class="btn btn-twitter" href="https://twitter.com/panjiesw" title="Twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a class="btn btn-linkedin" href="http://id.linkedin.com/pub/panjie-setiawan-wicaksono/43/868/229" title="LinkedIn">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a class="btn btn-google-plus" href="https://plus.google.com/+PanjieSetiawanWicaksono" title="Google+">
+            <i class="fa fa-google-plus"></i>
+          </a>
+          <a class="btn btn-github" href="https://github.com/panjiesw" title="GitHub">
+            <i class="fa fa-github"></i>
+          </a>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+  <script src="http://blog.panjiesw.com/theme/js/custom.js" type="text/javascript"></script>
+
 </body>
 </html>
