@@ -1,0 +1,37 @@
+<div id="secondary" class="col-sm-3 sidebar" style="display: none;">
+  <aside>
+
+    <div class="about">
+      <h4>{{ TAGLINE }}</h4>
+      <p>Hi, I'm Panjie SW. Here you are reading some of my random things I do in front of my old laptop.</p>
+    </div>
+
+    <div class="tags">
+      <h4>Tags</h4>
+      <ul>
+        {% for tag in tags %}
+          <li><a href="{{ SITEURL }}/{{ tag[0].url }}" class="label label-{{ TAGS_LABEL[tag[0].name] | default('primary') }}">{{ tag[0] }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="socialmedia">
+      <h4>Share</h4>
+      <div class="socials-sidebar">
+        <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.panjiesw.com" onClick="return popup(this, 'facebook');" title="Facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a class="btn btn-twitter" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fblog.panjiesw.com&via=panjiesw&text=Panjie+SW%27s+Blog+-+randomness+happens" title="Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-google-plus" href="https://plus.google.com/share?url=http://blog.panjiesw.com" onClick="return popup(this, 'google-plus');" title="Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.panjiesw.com&title=Panjie%20SW's%20Blog&summary=randomness%20happen&source=http://blog.panjiesw.com" onClick="return popup(this, 'linkedin');" title="LinkedIn">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+
+  </aside>
+</div>
