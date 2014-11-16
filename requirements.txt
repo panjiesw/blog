@@ -1,4 +1,4 @@
-pelican==3.4.0
+pelican==3.5.0
 markdown
 beautifulsoup4
 
